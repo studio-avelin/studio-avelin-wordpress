@@ -1,6 +1,13 @@
 <?php
 /**
- * Native Studio Avelin Journal: content model, editor controls and templates.
+ * Studio Avelin Journal: editor controls and template helpers for the
+ * native `post` post type, styled and routed as the "Journal".
+ *
+ * Journal entries are normal WordPress posts (so they can be published via
+ * the WordPress REST API from Ulysses) using the standard `category` and
+ * `post_tag` taxonomies. Routing and design come from home.php, single.php,
+ * category.php and tag.php plus the journal/* partials, picked up
+ * automatically through WordPress's normal template hierarchy.
  *
  * @package studio-avelin-child
  */
@@ -9,69 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/** Register the Journal post type and its taxonomies. */
-function sa_journal_register_content() {
-	register_post_type(
-		'sa_journal',
-		array(
-			'labels' => array(
-				'name'          => __( 'Journal', 'studio-avelin-child' ),
-				'singular_name' => __( 'Journal entry', 'studio-avelin-child' ),
-				'add_new_item'  => __( 'Add journal entry', 'studio-avelin-child' ),
-				'edit_item'     => __( 'Edit journal entry', 'studio-avelin-child' ),
-			),
-			'public'       => true,
-			'show_in_rest' => true,
-			'has_archive'  => 'journal',
-			'rewrite'      => array( 'slug' => 'journal', 'with_front' => false ),
-			'menu_icon'    => 'dashicons-welcome-write-blog',
-			'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions' ),
-		)
-	);
-
-	register_taxonomy(
-		'sa_journal_category',
-		'sa_journal',
-		array(
-			'labels'            => array( 'name' => __( 'Journal categories', 'studio-avelin-child' ), 'singular_name' => __( 'Journal category', 'studio-avelin-child' ) ),
-			'public'            => true,
-			'show_in_rest'      => true,
-			'hierarchical'      => true,
-			'show_admin_column' => true,
-			'rewrite'           => array( 'slug' => 'journal/category', 'with_front' => false ),
-		)
-	);
-
-	register_taxonomy(
-		'sa_journal_tag',
-		'sa_journal',
-		array(
-			'labels'            => array( 'name' => __( 'Journal tags', 'studio-avelin-child' ), 'singular_name' => __( 'Journal tag', 'studio-avelin-child' ) ),
-			'public'            => true,
-			'show_in_rest'      => true,
-			'hierarchical'      => false,
-			'show_admin_column' => true,
-			'rewrite'           => array( 'slug' => 'journal/tag', 'with_front' => false ),
-		)
-	);
-}
-add_action( 'init', 'sa_journal_register_content' );
-
-/** Refresh rewrite rules once when the Journal routing version changes. */
-function sa_journal_maybe_flush_rewrite_rules() {
-	$rewrite_version = '1';
-	if ( $rewrite_version === get_option( 'sa_journal_rewrite_version' ) ) {
-		return;
-	}
-
-	flush_rewrite_rules( false );
-	update_option( 'sa_journal_rewrite_version', $rewrite_version, false );
-}
-add_action( 'init', 'sa_journal_maybe_flush_rewrite_rules', 20 );
-
 /** Add the native featured-entry control. */
 function sa_journal_add_featured_box() {
-	add_meta_box( 'sa-journal-featured', __( 'Journal feature', 'studio-avelin-child' ), 'sa_journal_featured_box', 'sa_journal', 'side' );
+	add_meta_box( 'sa-journal-featured', __( 'Journal feature', 'studio-avelin-child' ), 'sa_journal_featured_box', 'post', 'side' );
 }
 add_action( 'add_meta_boxes', 'sa_journal_add_featured_box' );
 
@@ -89,7 +36,7 @@ function sa_journal_save_featured( $post_id ) {
 	if ( ! isset( $_POST['sa_journal_featured_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['sa_journal_featured_nonce'] ) ), 'sa_journal_save_featured' ) ) {
 		return;
 	}
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE || ! current_user_can( 'edit_post', $post_id ) || 'sa_journal' !== get_post_type( $post_id ) ) {
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE || ! current_user_can( 'edit_post', $post_id ) || 'post' !== get_post_type( $post_id ) ) {
 		return;
 	}
 	if ( isset( $_POST['sa_journal_featured'] ) ) {
@@ -98,31 +45,18 @@ function sa_journal_save_featured( $post_id ) {
 		delete_post_meta( $post_id, 'sa_journal_featured' );
 	}
 }
-add_action( 'save_post_sa_journal', 'sa_journal_save_featured' );
+add_action( 'save_post_post', 'sa_journal_save_featured' );
 
-/** Whether the current request belongs to the native Journal. */
+/** Whether the current request belongs to the Journal (the blog). */
 function sa_journal_is_request() {
-	return is_post_type_archive( 'sa_journal' ) || is_singular( 'sa_journal' ) || is_tax( array( 'sa_journal_category', 'sa_journal_tag' ) );
+	return is_home() || is_singular( 'post' ) || is_category() || is_tag();
 }
 
-/** Route only Journal requests to the child theme's PHP templates. */
-function sa_journal_template_include( $template ) {
-	$journal_dir = get_stylesheet_directory() . '/journal/';
-	if ( is_singular( 'sa_journal' ) ) {
-		return $journal_dir . 'single-journal.php';
-	}
-	if ( is_tax( 'sa_journal_category' ) ) {
-		return $journal_dir . 'taxonomy-journal-category.php';
-	}
-	if ( is_tax( 'sa_journal_tag' ) ) {
-		return $journal_dir . 'taxonomy-journal-tag.php';
-	}
-	if ( is_post_type_archive( 'sa_journal' ) ) {
-		return $journal_dir . 'archive-journal.php';
-	}
-	return $template;
+/** URL of the Journal archive (the WordPress "posts page"). */
+function sa_journal_archive_url() {
+	$page_id = (int) get_option( 'page_for_posts' );
+	return $page_id ? get_permalink( $page_id ) : home_url( '/journal/' );
 }
-add_filter( 'template_include', 'sa_journal_template_include', 110 );
 
 /** Load Journal assets only on Journal routes. */
 function sa_journal_enqueue_assets() {
@@ -149,7 +83,7 @@ function sa_journal_reading_time( $post_id = null ) {
 function sa_journal_featured_post() {
 	$posts = get_posts(
 		array(
-			'post_type'      => 'sa_journal',
+			'post_type'      => 'post',
 			'post_status'    => 'publish',
 			'posts_per_page' => 1,
 			'meta_key'       => 'sa_journal_featured',
@@ -157,7 +91,7 @@ function sa_journal_featured_post() {
 		)
 	);
 	if ( empty( $posts ) ) {
-		$posts = get_posts( array( 'post_type' => 'sa_journal', 'post_status' => 'publish', 'posts_per_page' => 1 ) );
+		$posts = get_posts( array( 'post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => 1 ) );
 	}
 	return $posts ? $posts[0] : null;
 }
@@ -228,15 +162,15 @@ function sa_journal_post_cover( $post_id = null, $size = 'large' ) {
 
 /** Find related entries: same categories first, then recent entries. */
 function sa_journal_related_posts( $post_id, $limit = 3 ) {
-	$term_ids = wp_get_post_terms( $post_id, 'sa_journal_category', array( 'fields' => 'ids' ) );
-	$args     = array( 'post_type' => 'sa_journal', 'post_status' => 'publish', 'posts_per_page' => $limit, 'post__not_in' => array( $post_id ) );
+	$term_ids = wp_get_post_terms( $post_id, 'category', array( 'fields' => 'ids' ) );
+	$args     = array( 'post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => $limit, 'post__not_in' => array( $post_id ) );
 	if ( $term_ids ) {
-		$args['tax_query'] = array( array( 'taxonomy' => 'sa_journal_category', 'field' => 'term_id', 'terms' => $term_ids ) );
+		$args['tax_query'] = array( array( 'taxonomy' => 'category', 'field' => 'term_id', 'terms' => $term_ids ) );
 	}
 	$related = get_posts( $args );
 	if ( count( $related ) < $limit ) {
 		$exclude = array_merge( array( $post_id ), wp_list_pluck( $related, 'ID' ) );
-		$fill    = get_posts( array( 'post_type' => 'sa_journal', 'post_status' => 'publish', 'posts_per_page' => $limit - count( $related ), 'post__not_in' => $exclude ) );
+		$fill    = get_posts( array( 'post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => $limit - count( $related ), 'post__not_in' => $exclude ) );
 		$related = array_merge( $related, $fill );
 	}
 	return $related;

@@ -62,7 +62,7 @@ $sa_projects = array(
 
 $sa_journal_posts = new WP_Query(
 	array(
-		'post_type'           => 'sa_journal',
+		'post_type'           => 'post',
 		'post_status'         => 'publish',
 		'posts_per_page'      => 3,
 		'orderby'             => 'date',
@@ -236,7 +236,7 @@ $sa_journal_posts = new WP_Query(
 				<?php while ( $sa_journal_posts->have_posts() ) : ?>
 					<?php
 					$sa_journal_posts->the_post();
-					$sa_terms    = get_the_terms( get_the_ID(), 'sa_journal_category' );
+					$sa_terms    = get_the_terms( get_the_ID(), 'category' );
 					$sa_category  = ( $sa_terms && ! is_wp_error( $sa_terms ) ) ? $sa_terms[0]->name : 'Journal';
 					$sa_excerpt  = get_the_excerpt();
 					?>
@@ -253,7 +253,7 @@ $sa_journal_posts = new WP_Query(
 			</div>
 
 			<div class="sa-sec-foot sa-reveal">
-				<a class="sa-textlink" href="<?php echo esc_url( $sa_home . 'journal/' ); ?>">Alle Notizen <span aria-hidden="true">&rarr;</span></a>
+				<a class="sa-textlink" href="<?php echo esc_url( sa_journal_archive_url() ); ?>">Alle Notizen <span aria-hidden="true">&rarr;</span></a>
 			</div>
 		</div>
 	</section>

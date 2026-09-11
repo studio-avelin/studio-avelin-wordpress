@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'SA_CHILD_VERSION' ) ) {
-	define( 'SA_CHILD_VERSION', '2.1.1' );
+	define( 'SA_CHILD_VERSION', '2.1.2' );
 }
 
 /** Output the Studio Avelin browser icon set. */
@@ -62,11 +62,11 @@ function sa_child_document_title( $title ) {
 		return ucwords( str_replace( '-', ' ', basename( $request_path ) ) ) . ' – Studio Avelin';
 	}
 
-	if ( is_post_type_archive( 'sa_journal' ) ) {
+	if ( is_home() ) {
 		return 'Journal – Studio Avelin';
 	}
 
-	if ( is_singular( 'sa_journal' ) ) {
+	if ( is_singular( 'post' ) ) {
 		return get_the_title() . ' – Studio Avelin';
 	}
 
@@ -144,7 +144,7 @@ function sa_child_meta_description( $description = '' ) {
 		return 'Projektanfrage an Studio Avelin – persönlich, unkompliziert und direkt.';
 	}
 
-	if ( is_post_type_archive( 'sa_journal' ) || is_singular( 'sa_journal' ) || is_tax( array( 'sa_journal_category', 'sa_journal_tag' ) ) ) {
+	if ( is_home() || is_singular( 'post' ) || is_category() || is_tag() ) {
 		return 'Kein Marketing-Blog – ein Einblick in die Person hinter Studio Avelin: Reisen, Training und Bücher.';
 	}
 

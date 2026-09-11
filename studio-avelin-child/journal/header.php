@@ -1,10 +1,10 @@
 <?php
 /** Journal-specific navigation. */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
-$archive_url    = get_post_type_archive_link( 'sa_journal' );
-$journal_terms  = get_terms( array( 'taxonomy' => 'sa_journal_category', 'hide_empty' => true, 'number' => 1 ) );
+$archive_url    = sa_journal_archive_url();
+$journal_terms  = get_terms( array( 'taxonomy' => 'category', 'hide_empty' => true, 'number' => 1 ) );
 $categories_url = $journal_terms && ! is_wp_error( $journal_terms ) ? get_term_link( $journal_terms[0] ) : $archive_url;
-$is_taxonomy    = is_tax( array( 'sa_journal_category', 'sa_journal_tag' ) );
+$is_taxonomy    = is_category() || is_tag();
 ?>
 <header class="sa-journal-header">
 	<div class="sa-journal-header__inner">
