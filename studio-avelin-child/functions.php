@@ -166,18 +166,6 @@ function sa_child_meta_description_tag() {
 add_action( 'wp_head', 'sa_child_meta_description_tag', 2 );
 
 /**
- * Force noindex, nofollow site-wide, overriding Yoast's per-page robots
- * settings (Yoast also filters wp_robots, so this must run after it).
- */
-function sa_child_force_noindex_nofollow( array $robots ): array {
-	unset( $robots['index'], $robots['follow'] );
-	$robots['noindex']  = true;
-	$robots['nofollow'] = true;
-	return $robots;
-}
-add_filter( 'wp_robots', 'sa_child_force_noindex_nofollow', PHP_INT_MAX );
-
-/**
  * Open Graph / Twitter Card polish.
  *
  * Yoast emits Open Graph tags but, on this install, with a generic title
