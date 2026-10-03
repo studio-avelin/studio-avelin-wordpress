@@ -96,7 +96,7 @@ $sa_facts = array(
 			<div class="sa-arc">
 				<?php foreach ( $sa_values as $index => $v ) : ?>
 					<div class="sa-arc__item sa-reveal">
-						<span class="sa-arc__n"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+						<span class="sa-arc__n sa-slash" aria-hidden="true">/</span>
 						<div>
 							<h3 class="sa-arc__h"><?php echo esc_html( $v[0] ); ?></h3>
 							<p class="sa-arc__p"><?php echo esc_html( $v[1] ); ?></p>

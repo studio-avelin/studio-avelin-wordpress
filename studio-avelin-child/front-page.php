@@ -147,7 +147,7 @@ $sa_journal_posts = new WP_Query(
 			<div class="sa-arc">
 				<?php foreach ( $sa_services as $index => $service ) : ?>
 					<div class="sa-arc__item sa-reveal">
-						<span class="sa-arc__n"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+						<span class="sa-arc__n sa-slash" aria-hidden="true">/</span>
 						<div>
 							<h3 class="sa-arc__h"><?php echo esc_html( $service['title'] ); ?></h3>
 							<p class="sa-arc__p"><?php echo esc_html( $service['text'] ); ?></p>
@@ -183,7 +183,7 @@ $sa_journal_posts = new WP_Query(
 							<?php endif; ?>
 						</div>
 						<div class="sa-feat__body">
-							<span class="sa-feat__index"><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+							<span class="sa-feat__index sa-slash" aria-hidden="true">/</span>
 							<span class="sa-feat__meta"><?php echo esc_html( $project['meta'] ); ?><span class="sa-feat__meta-status"><?php echo esc_html( $project['status'] ); ?></span></span>
 							<h3 class="sa-feat__name"><?php echo esc_html( $project['name'] ); ?></h3>
 							<span class="sa-feat__full"><?php echo esc_html( $project['full'] ); ?></span>
@@ -275,9 +275,9 @@ $sa_journal_posts = new WP_Query(
 			</p>
 
 			<ul class="sa-closing__brief sa-reveal">
-				<li><span>01</span>Deine Idee oder bestehende Website</li>
-				<li><span>02</span>Der gewünschte Umfang</li>
-				<li><span>03</span>Dein gewünschter Zeitrahmen</li>
+				<li><span class="sa-slash" aria-hidden="true">/</span>Deine Idee oder bestehende Website</li>
+				<li><span class="sa-slash" aria-hidden="true">/</span>Der gewünschte Umfang</li>
+				<li><span class="sa-slash" aria-hidden="true">/</span>Dein gewünschter Zeitrahmen</li>
 			</ul>
 
 			<a class="sa-btn sa-btn--light sa-reveal" href="<?php echo esc_url( $sa_home . 'contact/' ); ?>">

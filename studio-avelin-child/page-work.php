@@ -100,7 +100,7 @@ function sa_work_block( $p, $number, $cta ) {
 			<?php endif; ?>
 		</div>
 		<div class="sa-feat__body">
-			<span class="sa-feat__index"><?php echo esc_html( str_pad( (string) $number, 2, '0', STR_PAD_LEFT ) ); ?></span>
+			<span class="sa-feat__index sa-slash" aria-hidden="true">/</span>
 			<span class="sa-feat__meta"><?php echo esc_html( $p['meta'] ); ?><span class="sa-feat__meta-status"><?php echo esc_html( $p['status'] ); ?></span></span>
 			<h3 class="sa-feat__name"><?php echo esc_html( $p['name'] ); ?></h3>
 			<span class="sa-feat__full"><?php echo esc_html( $p['full'] ); ?></span>

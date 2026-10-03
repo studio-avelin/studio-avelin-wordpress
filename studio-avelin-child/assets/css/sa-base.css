@@ -1050,3 +1050,13 @@ body.sa-home .sa-main { padding-top: 0; }
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Lime slash as list/section marker (replaces 01, 02 … numbering). */
+body .sa-slash.sa-slash {
+  font-family: var(--sa-font-display, "Poppins", sans-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  color: #C7F000;
+}

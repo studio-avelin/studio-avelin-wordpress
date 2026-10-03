@@ -17,7 +17,7 @@
 
 	<!-- 01. ANGABEN GEMÄSS § 5 DDG -->
 	<section class="sa-legal-card">
-		<div class="sa-legal-card__num">01</div>
+		<div class="sa-legal-card__num" aria-hidden="true"><span class="sa-slash">/</span></div>
 		<h2>Angaben gem&auml;&szlig; &sect; 5 DDG</h2>
 
 		<div style="background: rgba(61, 61, 61, 0.02); border: 1px solid var(--sa-line, rgba(61, 61, 61, 0.12)); padding: 1.5rem 1.75rem; margin: 1.25rem 0; border-radius: 4px;">
@@ -30,7 +30,7 @@
 
 	<!-- 02. KONTAKT -->
 	<section class="sa-legal-card">
-		<div class="sa-legal-card__num">02</div>
+		<div class="sa-legal-card__num" aria-hidden="true"><span class="sa-slash">/</span></div>
 		<h2>Kontakt</h2>
 
 		<p><strong>E-Mail:</strong> <a href="mailto:hello@studio-avelin.com">hello@studio-avelin.com</a></p>
@@ -39,7 +39,7 @@
 
 	<!-- 03. UMSATZSTEUER-ID -->
 	<section class="sa-legal-card">
-		<div class="sa-legal-card__num">03</div>
+		<div class="sa-legal-card__num" aria-hidden="true"><span class="sa-slash">/</span></div>
 		<h2>Umsatzsteuer-ID</h2>
 
 		<p>Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27a Umsatzsteuergesetz:</p>
@@ -48,7 +48,7 @@
 
 	<!-- 04. VERBRAUCHERSTREITBEILEGUNG -->
 	<section class="sa-legal-card">
-		<div class="sa-legal-card__num">04</div>
+		<div class="sa-legal-card__num" aria-hidden="true"><span class="sa-slash">/</span></div>
 		<h2>Verbraucherstreitbeilegung</h2>
 
 		<p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>

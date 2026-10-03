@@ -17,7 +17,7 @@
 
 	<!-- 01. DATENSCHUTZ AUF EINEN BLICK -->
 	<section class="sa-legal-card">
-		<div class="sa-legal-card__num">01</div>
+		<div class="sa-legal-card__num" aria-hidden="true"><span class="sa-slash">/</span></div>
 		<h2>1. Datenschutz auf einen Blick</h2>
 
 		<h3>Allgemeine Hinweise</h3>
@@ -37,7 +37,7 @@
 
 	<!-- 02. HOSTING -->
 	<section class="sa-legal-card">
-		<div class="sa-legal-card__num">02</div>
+		<div class="sa-legal-card__num" aria-hidden="true"><span class="sa-slash">/</span></div>
 		<h2>2. Hosting</h2>
 		<p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
 		
@@ -54,7 +54,7 @@
 
 	<!-- 03. ALLGEMEINE HINWEISE UND PFLICHTINFORMATIONEN -->
 	<section class="sa-legal-card">
-		<div class="sa-legal-card__num">03</div>
+		<div class="sa-legal-card__num" aria-hidden="true"><span class="sa-slash">/</span></div>
 		<h2>3. Allgemeine Hinweise und Pflichtinformationen</h2>
 
 		<h3>Datenschutz</h3>
@@ -95,7 +95,7 @@
 
 	<!-- 04. DATENERFASSUNG AUF DIESER WEBSITE -->
 	<section class="sa-legal-card">
-		<div class="sa-legal-card__num">04</div>
+		<div class="sa-legal-card__num" aria-hidden="true"><span class="sa-slash">/</span></div>
 		<h2>4. Datenerfassung auf dieser Website</h2>
 
 		<h3>Server-Log-Dateien</h3>

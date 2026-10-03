@@ -89,7 +89,7 @@ $sa_home = trailingslashit( home_url( '/' ) );
 						</div>
 						<div class="sa-exp-card__body">
 							<div class="sa-exp-card__head">
-								<span class="sa-exp-card__num">01</span>
+								<span class="sa-exp-card__num sa-slash" aria-hidden="true">/</span>
 								<span class="sa-exp-card__eyebrow">GENERATIVE TYPE GRID</span>
 							</div>
 							<h2 class="sa-exp-card__title">Matrix</h2>
@@ -112,7 +112,7 @@ $sa_home = trailingslashit( home_url( '/' ) );
 						</div>
 						<div class="sa-exp-card__body">
 							<div class="sa-exp-card__head">
-								<span class="sa-exp-card__num">02</span>
+								<span class="sa-exp-card__num sa-slash" aria-hidden="true">/</span>
 								<span class="sa-exp-card__eyebrow">CANVAS STUDY</span>
 							</div>
 							<h2 class="sa-exp-card__title">Avelin Signal Grid</h2>
@@ -135,7 +135,7 @@ $sa_home = trailingslashit( home_url( '/' ) );
 						</div>
 						<div class="sa-exp-card__body">
 							<div class="sa-exp-card__head">
-								<span class="sa-exp-card__num">03</span>
+								<span class="sa-exp-card__num sa-slash" aria-hidden="true">/</span>
 								<span class="sa-exp-card__eyebrow">DESIGN TOOL</span>
 							</div>
 							<h2 class="sa-exp-card__title">Poster Generator</h2>
@@ -161,7 +161,7 @@ $sa_home = trailingslashit( home_url( '/' ) );
 						</div>
 						<div class="sa-exp-card__body">
 							<div class="sa-exp-card__head">
-								<span class="sa-exp-card__num">04</span>
+								<span class="sa-exp-card__num sa-slash" aria-hidden="true">/</span>
 								<span class="sa-exp-card__eyebrow">IN PROGRESS</span>
 							</div>
 							<h2 class="sa-exp-card__title">Future Experiments</h2>
