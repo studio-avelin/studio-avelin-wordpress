@@ -71,14 +71,6 @@ $sa_link_ext  = ! empty( $sa_project['link'] ) && 0 === strpos( $sa_project['lin
         <?php foreach ( $sa_project['description'] as $sa_paragraph ) : ?>
           <p><?php echo esc_html( $sa_paragraph ); ?></p>
         <?php endforeach; ?>
-        <?php
-        while ( have_posts() ) :
-          the_post();
-          if ( '' !== trim( get_the_content() ) ) {
-            the_content();
-          }
-        endwhile;
-        ?>
       </div>
 
       <aside class="sa-pn__facts sa-reveal">
