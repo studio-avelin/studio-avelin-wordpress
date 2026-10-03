@@ -86,6 +86,12 @@ FILES=(
 	"assets/fonts/raleway-latin-ext.woff2"
 )
 
+# Optional: deploy only the files given as arguments (paths relative to the theme),
+# e.g. ./deploy.sh parts/sa-project-note.php assets/css/home.css
+if [[ $# -gt 0 ]]; then
+  FILES=("$@")
+fi
+
 for file in "${FILES[@]}"; do
   [[ -f "${LOCAL_DIR}/${file}" ]] || {
     echo "Missing deployment file: ${LOCAL_DIR}/${file}" >&2
