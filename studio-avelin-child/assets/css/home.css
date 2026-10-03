@@ -2359,6 +2359,30 @@ body.sa-home .sa-jrn__item:hover .sa-jrn__media > * { transform: scale(1.03); }
 @media (prefers-reduced-motion: reduce) {
   body.sa-home .sa-jrn__item:hover .sa-jrn__media > * { transform: none; }
 }
+body.sa-home .sa-jrn__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  flex: 1;
+}
+
+/* Fewer than three entries: fill the row instead of leaving empty columns. */
+@media (min-width: 800px) {
+  body.sa-home .sa-jrn--count-2 { grid-template-columns: repeat(2, 1fr); }
+
+  /* A single entry becomes a wide feature: landscape image left, text right. */
+  body.sa-home .sa-jrn--count-1 { grid-template-columns: 1fr; }
+  body.sa-home .sa-jrn--count-1 .sa-jrn__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+  }
+  body.sa-home .sa-jrn--count-1 .sa-jrn__media {
+    margin: calc(var(--sa-jrn-pad) * -1) 0 calc(var(--sa-jrn-pad) * -1) calc(var(--sa-jrn-pad) * -1);
+  }
+  body.sa-home .sa-jrn--count-1 .sa-jrn__d { flex: 0 1 auto; }
+}
 body.sa-home .sa-jrn__cat {
   font-family: var(--sa-font-display);
   font-size: 0.66rem;

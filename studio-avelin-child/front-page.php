@@ -232,7 +232,7 @@ $sa_journal_posts = new WP_Query(
 			<h2 class="sa-sec-title sa-reveal" id="sa-journal-title">Journal</h2>
 			<p class="sa-sec-intro sa-reveal">Notizen aus Design, Entwicklung und dem Studioalltag – und aus dem, was daneben passiert.</p>
 
-			<div class="sa-jrn">
+			<div class="sa-jrn sa-jrn--count-<?php echo (int) $sa_journal_posts->post_count; ?>">
 				<?php while ( $sa_journal_posts->have_posts() ) : ?>
 					<?php
 					$sa_journal_posts->the_post();
@@ -244,12 +244,14 @@ $sa_journal_posts = new WP_Query(
 						<?php if ( function_exists( 'sa_journal_post_cover' ) ) : ?>
 							<span class="sa-jrn__media"><?php sa_journal_post_cover( get_the_ID(), 'medium_large' ); ?></span>
 						<?php endif; ?>
-						<span class="sa-jrn__cat"><?php echo esc_html( $sa_category ); ?></span>
-						<span class="sa-jrn__t"><?php the_title(); ?></span>
-						<?php if ( $sa_excerpt ) : ?>
-							<span class="sa-jrn__d"><?php echo esc_html( wp_trim_words( $sa_excerpt, 20, '…' ) ); ?></span>
-						<?php endif; ?>
-						<span class="sa-jrn__date"><?php echo esc_html( get_the_date() ); ?></span>
+						<span class="sa-jrn__body">
+							<span class="sa-jrn__cat"><?php echo esc_html( $sa_category ); ?></span>
+							<span class="sa-jrn__t"><?php the_title(); ?></span>
+							<?php if ( $sa_excerpt ) : ?>
+								<span class="sa-jrn__d"><?php echo esc_html( wp_trim_words( $sa_excerpt, 20, '…' ) ); ?></span>
+							<?php endif; ?>
+							<span class="sa-jrn__date"><?php echo esc_html( get_the_date() ); ?></span>
+						</span>
 					</a>
 				<?php endwhile; ?>
 				<?php wp_reset_postdata(); ?>

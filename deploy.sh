@@ -165,9 +165,13 @@ foreach directory [list \
   wait_for_prompt "creating $directory" 1
 }
 
+# Upload under a temporary name, then rename over the live file, so PHP never
+# reads (and caches) a half-written file.
 foreach file $files {
-  send -- "put $local_dir/$file $remote_dir/$file\r"
+  send -- "put $local_dir/$file $remote_dir/$file.uploading\r"
   wait_for_prompt "upload of $file"
+  send -- "rename $remote_dir/$file.uploading $remote_dir/$file\r"
+  wait_for_prompt "rename of $file"
 }
 
 send -- "bye\r"
