@@ -241,6 +241,9 @@ $sa_journal_posts = new WP_Query(
 					$sa_excerpt  = get_the_excerpt();
 					?>
 					<a class="sa-jrn__item sa-reveal" href="<?php the_permalink(); ?>">
+						<?php if ( function_exists( 'sa_journal_post_cover' ) ) : ?>
+							<span class="sa-jrn__media"><?php sa_journal_post_cover( get_the_ID(), 'medium_large' ); ?></span>
+						<?php endif; ?>
 						<span class="sa-jrn__cat"><?php echo esc_html( $sa_category ); ?></span>
 						<span class="sa-jrn__t"><?php the_title(); ?></span>
 						<?php if ( $sa_excerpt ) : ?>

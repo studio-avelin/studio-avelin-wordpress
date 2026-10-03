@@ -2331,14 +2331,34 @@ body.sa-home .sa-jrn {
 }
 @media (min-width: 800px) { body.sa-home .sa-jrn { grid-template-columns: repeat(3, 1fr); } }
 body.sa-home .sa-jrn__item {
+  --sa-jrn-pad: clamp(1.75rem, 3vw, 2.5rem);
   background: var(--sa-surface);
-  padding: clamp(1.75rem, 3vw, 2.5rem);
+  padding: var(--sa-jrn-pad);
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
   transition: background-color 300ms ease;
 }
 body.sa-home .sa-jrn__item:hover { background: #e6e4de; }
+body.sa-home .sa-jrn__media {
+  display: block;
+  margin: calc(var(--sa-jrn-pad) * -1) calc(var(--sa-jrn-pad) * -1) 0.6rem;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #181818;
+}
+body.sa-home .sa-jrn__media img,
+body.sa-home .sa-jrn__media svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms ease;
+}
+body.sa-home .sa-jrn__item:hover .sa-jrn__media > * { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) {
+  body.sa-home .sa-jrn__item:hover .sa-jrn__media > * { transform: none; }
+}
 body.sa-home .sa-jrn__cat {
   font-family: var(--sa-font-display);
   font-size: 0.66rem;
