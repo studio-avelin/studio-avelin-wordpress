@@ -40,7 +40,7 @@ $sa_services = array(
 $sa_projects = array(
 	array(
 		'name'   => 'Hawaiimassage zu Hause',
-		'full'   => 'Anja Krampe · Kelkheim',
+		'full'   => 'Mobile Wellnessmassage · Kelkheim',
 		'status' => 'Live',
 		'meta'   => 'Kundenprojekt · Website',
 		'text'   => 'Eine ruhige, warme Website für mobile Wellnessmassagen zu Hause – klare Angebotsübersicht, viel Raum für Bild und Text.',

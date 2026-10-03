@@ -18,7 +18,7 @@ $sa_uri  = get_stylesheet_directory_uri();
 $sa_clients = array(
 	array(
 		'name'   => 'Hawaiimassage zu Hause',
-		'full'   => 'Anja Krampe · Kelkheim',
+		'full'   => 'Mobile Wellnessmassage · Kelkheim',
 		'meta'   => 'Kundenprojekt · Website',
 		'status' => 'Live',
 		'text'   => 'Eine ruhige, warme Website für mobile Wellnessmassagen zu Hause. Klare Angebotsübersicht, viel Raum für Bild und Text, ein einfacher Weg zur Terminanfrage.',
