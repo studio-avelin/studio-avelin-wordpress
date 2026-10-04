@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="In & Out with us: Toys, Dessous und Pflege mit persönlicher Beratung. Online-Shop und Toypartys für alle Körper und alle Geschlechter.">
+<link rel="icon" type="image/webp" href="logo.webp">
+<title>In &amp; Out with us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,100,0..1&family=Pacifico&family=Rubik:wght@400;500;700&display=swap">
+<style>
+/* Layout: Retro-Sticker-Ästhetik der 70er, diszipliniert eingesetzt. Cremefarbene Fläche, Wellenbänder als Sektionstrenner, braune Konturen statt Schatten-Effekten */
+:root{
+  --cream:#f8ead0;
+  --cream-2:#f2dcb6;
+  --pink:#f2879a;
+  --pink-deep:#d6516b;
+  --pink-soft:#f9c3c8;
+  --sage:#9fae74;
+  --olive:#4c5a2c;
+  --brown:#3b1b12;
+  --brown-2:#55291d;
+  --font-display:"Fraunces", "Cooper Black", "Cooper Std", Georgia, serif;
+  --font-script:"Pacifico", "Brush Script MT", cursive;
+  --font-body:"Rubik", "Helvetica Neue", Arial, sans-serif;
+  --step-0:1rem; --step-1:1.2rem; --step-2:1.7rem; --step-3:clamp(2.1rem,4.4vw,3.2rem); --step-4:clamp(3rem,8vw,6.2rem);
+  --gutter:clamp(16px,4vw,56px);
+  --radius:22px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--cream);color:var(--brown);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--pink-deep);outline-offset:3px}
+h1,h2,h3{font-family:var(--font-display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:800;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:1220px;margin:0 auto;padding-inline:var(--gutter)}
+.label{font:700 .74rem/1.2 var(--font-body);letter-spacing:.16em;text-transform:uppercase}
+.script{font-family:var(--font-script);font-weight:400;letter-spacing:0}
+.spark{display:inline-block;width:.9em;height:.9em;vertical-align:-.08em;fill:currentColor}
+
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.95em 1.7em;border:2.5px solid var(--brown);border-radius:999px;font:700 .85rem/1 var(--font-body);letter-spacing:.1em;text-transform:uppercase;background:var(--cream);color:var(--brown);cursor:pointer;box-shadow:0 4px 0 var(--brown);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--brown)}
+.btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--brown)}
+.btn.pink{background:var(--pink)}
+.btn.sage{background:var(--sage)}
+
+/* Topbar */
+.topbar{background:var(--brown);color:var(--cream);font:500 .78rem/1.2 var(--font-body);letter-spacing:.06em}
+.topbar .wrap{display:flex;justify-content:center;align-items:center;gap:1.4rem;flex-wrap:wrap;padding-block:.6rem}
+.topbar .spark{color:var(--pink)}
+
+/* Header */
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--cream);border-bottom:2.5px solid var(--brown)}
+header.site .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-block:.7rem;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem;justify-self:center}
+.brand img{width:56px;height:56px}
+.brand span{font-family:var(--font-display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:800;font-size:1.35rem;white-space:nowrap}
+.brand span em{font-family:var(--font-script);font-style:normal;font-weight:400;color:var(--pink-deep);font-size:1.05rem;margin-left:.2rem}
+nav.main{display:flex;gap:1.4rem;font-weight:500;font-size:.92rem;white-space:nowrap}
+nav.main a{padding-block:.3rem;border-bottom:2.5px solid transparent}
+nav.main a:hover,nav.main a.on{border-color:var(--pink)}
+.tools{display:flex;justify-content:flex-end;gap:1.3rem;font-weight:500;font-size:.92rem;align-items:center}
+.badge{display:inline-grid;place-items:center;min-width:1.45rem;height:1.45rem;border-radius:99px;background:var(--pink);border:2px solid var(--brown);font-size:.72rem;font-weight:700;margin-left:.3rem}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:var(--cream)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4rem);align-items:center;padding-block:clamp(2.5rem,6vw,5rem) clamp(4.5rem,9vw,7rem)}
+.hero h1{font-size:var(--step-4);color:var(--pink);-webkit-text-stroke:3px var(--brown);paint-order:stroke fill;text-shadow:5px 5px 0 var(--brown);margin-block:1rem 1.4rem;font-weight:900}
+.hero h1 .g{color:var(--sage)}
+.hero h1 .script{display:block;color:var(--cream);font-size:.62em;-webkit-text-stroke:2.5px var(--brown);margin-top:.15em}
+.hero .lead{max-width:33rem;font-size:var(--step-1)}
+.hero .ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.claim{display:inline-flex;gap:.6rem;align-items:center;flex-wrap:wrap;background:var(--brown);color:var(--cream);padding:.55rem 1rem;border-radius:999px}
+.claim .spark{color:var(--pink)}
+.hero-logo{position:relative;justify-self:center;width:min(100%,440px)}
+.hero-logo img{width:100%;display:block;filter:drop-shadow(8px 10px 0 rgba(59,27,18,.18));animation:wobble 9s ease-in-out infinite}
+.hero-logo .s{position:absolute;color:var(--olive)}
+.hero-logo .s1{top:2%;left:-4%;width:38px}
+.hero-logo .s2{bottom:10%;right:-6%;width:30px;color:var(--pink-deep)}
+@keyframes wobble{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+
+/* Wellenbänder */
+.waves{display:block;width:100%;height:auto;margin-top:-1px}
+.waves.flip{transform:scaleY(-1)}
+
+/* Zwei Säulen */
+.pillars{background:var(--brown);color:var(--cream)}
+.pillars .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2rem);padding-block:clamp(2.5rem,5vw,4rem)}
+.pillar{border:2.5px solid var(--cream);border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.6rem);display:grid;gap:.9rem;align-content:start}
+.pillar .label{color:var(--pink)}
+.pillar:nth-child(2) .label{color:var(--sage)}
+.pillar h2{font-size:var(--step-3)}
+.pillar p{opacity:.85;max-width:30rem}
+.pillar .btn{justify-self:start;margin-top:.6rem;border-color:var(--cream);box-shadow:0 4px 0 var(--cream)}
+.pillar .btn:hover{box-shadow:0 2px 0 var(--cream)}
+
+section.block{padding-block:clamp(3.5rem,7vw,6rem)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.head h2{font-size:var(--step-3);margin-top:.5rem}
+.head h2 .script{color:var(--pink-deep);font-size:.8em}
+.head .label{color:var(--olive)}
+.head a{font-weight:500;border-bottom:2.5px solid var(--pink)}
+
+/* Kategorien */
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:.9rem}
+.cat{border:2.5px solid var(--brown);border-radius:var(--radius);padding:1.2rem 1rem 1.1rem;display:grid;gap:.15rem;text-align:center;background:var(--cream);transition:transform .2s,background .2s}
+.cat:nth-child(3n+1){background:var(--pink-soft)}
+.cat:nth-child(3n+2){background:#d9dfbf}
+.cat:hover{transform:translateY(-3px) rotate(-1deg)}
+.cat b{font-family:var(--font-display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:800;font-size:1.15rem;line-height:1.15}
+.cat span{font-size:.78rem;opacity:.75}
+
+/* Produkte */
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2vw,1.6rem)}
+.card{display:grid;gap:.8rem;min-width:0}
+.card .img{aspect-ratio:4/5;max-width:100%;border:2.5px solid var(--brown);border-radius:var(--radius);position:relative;overflow:hidden;display:grid;place-items:center;background:var(--cream-2)}
+.card:nth-child(2) .img{background:#dfe4c6}
+.card:nth-child(3) .img{background:var(--pink-soft)}
+.card .img svg{width:62%;height:auto;transition:transform .5s ease}
+.card:hover .img svg{transform:rotate(-6deg) translateY(-4px)}
+.card .flag{position:absolute;top:.8rem;left:.8rem;background:var(--brown);color:var(--cream);border-radius:99px;padding:.35rem .7rem;font:700 .66rem/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase}
+.card .meta{display:flex;justify-content:space-between;gap:.8rem;align-items:baseline}
+.card h3{font-size:1.35rem}
+.card .price{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.card .spec{display:flex;flex-wrap:wrap;gap:.35rem}
+.card .spec span{font-size:.74rem;border:1.5px solid var(--brown);border-radius:99px;padding:.15rem .6rem}
+
+/* Party */
+.party{background:var(--pink)}
+.party-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start;padding-block:clamp(3rem,6vw,5rem)}
+.party h2{font-size:var(--step-3);margin-block:.6rem 1.1rem}
+.party h2 .script{color:var(--cream);-webkit-text-stroke:2px var(--brown);paint-order:stroke fill}
+.party .label{color:var(--brown)}
+.party .lead{max-width:32rem}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.steps li{display:grid;grid-template-columns:3.2rem 1fr;gap:1rem;align-items:start;background:var(--cream);border:2.5px solid var(--brown);border-radius:var(--radius);padding:1rem 1.2rem}
+.steps .n{display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;background:var(--sage);border:2.5px solid var(--brown);font-family:var(--font-display);font-weight:900;font-size:1.4rem}
+.steps b{display:block;font-weight:700;margin-bottom:.15rem}
+.steps span{font-size:.92rem}
+.finder{margin-top:2rem;background:var(--cream);border:2.5px solid var(--brown);border-radius:var(--radius);padding:1.5rem;box-shadow:6px 6px 0 var(--brown)}
+.finder form{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.8rem}
+.finder input,.finder select{flex:1 1 9rem;min-width:0;background:#fff8ec;border:2px solid var(--brown);border-radius:999px;color:var(--brown);padding:.8rem 1.1rem;font:inherit}
+.advisors{display:grid;margin-top:1.1rem}
+.adv{display:grid;grid-template-columns:2.8rem 1fr auto;gap:.9rem;align-items:center;padding:.75rem 0;border-top:2px dashed rgba(59,27,18,.25)}
+.avatar{width:2.8rem;height:2.8rem;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;background:var(--pink-soft);border:2px solid var(--brown)}
+.adv:nth-child(2) .avatar{background:#d9dfbf}
+.adv small{display:block;font-size:.8rem;opacity:.75}
+.adv .rate{font-size:.82rem;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:.75rem;opacity:.7;margin-top:.7rem}
+
+/* Berater*in werden */
+.career{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.career h2{font-size:var(--step-3);margin-block:.6rem 1.1rem}
+.career h2 .script{color:var(--olive)}
+.career .label{color:var(--pink-deep)}
+.career ul{margin:1.3rem 0 2rem;padding:0;list-style:none;display:grid;gap:.6rem}
+.career li{display:flex;gap:.7rem;align-items:baseline}
+.career li .spark{color:var(--pink-deep);flex:none}
+.calc{background:var(--sage);border:2.5px solid var(--brown);border-radius:var(--radius);padding:clamp(1.4rem,3vw,2.2rem);display:grid;gap:1.15rem;box-shadow:8px 8px 0 var(--brown)}
+.calc > .label{color:var(--brown)}
+.calc label{display:flex;justify-content:space-between;font-weight:500}
+.calc label output{font-weight:700;font-variant-numeric:tabular-nums}
+.calc input[type=range]{width:100%;accent-color:var(--pink-deep)}
+.calc .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;font-size:.72rem;text-align:center}
+.calc .tiers div{background:var(--cream);border:2px solid var(--brown);border-radius:14px;padding:.55rem .25rem}
+.calc .tiers div.on{background:var(--pink)}
+.calc .tiers b{display:block;font-size:1rem;font-variant-numeric:tabular-nums}
+.calc .result{background:var(--brown);color:var(--cream);border-radius:16px;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.calc .result b{font-family:var(--font-display);font-weight:900;font-size:var(--step-3);color:var(--pink);font-variant-numeric:tabular-nums}
+
+/* Vertrauen */
+.trust-band{background:var(--brown);color:var(--cream)}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding-block:clamp(2.5rem,5vw,3.5rem)}
+.trust .spark{width:28px;height:28px;color:var(--pink);margin-bottom:.6rem}
+.trust div:nth-child(even) .spark{color:var(--sage)}
+.trust b{display:block;font-family:var(--font-display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:800;font-size:1.3rem;margin-bottom:.35rem}
+.trust p{opacity:.8;font-size:.9rem}
+
+/* Magazin */
+.mag{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(1rem,2vw,1.6rem)}
+.post{display:grid;gap:.7rem;align-content:start;min-width:0}
+.post .ph{aspect-ratio:4/3;max-width:100%;border:2.5px solid var(--brown);border-radius:var(--radius);position:relative;overflow:hidden;background:var(--pink-soft)}
+.post:nth-child(2) .ph{background:#d9dfbf}
+.post:nth-child(3) .ph{background:var(--cream-2)}
+.post .ph svg{position:absolute;inset:0;width:100%;height:100%}
+.post:first-child .ph{aspect-ratio:16/10}
+.post .label{color:var(--pink-deep)}
+.post h3{font-size:1.4rem}
+.post p{font-size:.92rem;opacity:.8}
+
+footer{background:var(--brown);color:var(--cream);padding-block:3.5rem 2.5rem;font-size:.9rem}
+.fgrid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:2rem}
+.fgrid b{display:block;color:var(--pink);font-weight:700;margin-bottom:.7rem;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem}
+.fgrid a{display:block;padding-block:.2rem;opacity:.85}
+.fgrid a:hover{opacity:1;color:var(--pink)}
+.fbrand{display:flex;gap:1rem;align-items:center}
+.fbrand img{width:84px;height:84px}
+.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1.5px solid rgba(248,234,208,.25);margin-top:2.5rem;padding-top:1.4rem;font-size:.78rem;opacity:.8}
+
+@media (max-width:1100px){
+  nav.main{display:none}
+  header.site .wrap{grid-template-columns:1fr auto}
+  .brand{justify-self:start}
+  .hero .wrap,.party-grid,.career{grid-template-columns:1fr}
+  .hero-logo{width:min(80%,340px);order:-1}
+  .pillars .wrap{grid-template-columns:1fr}
+  .cats{grid-template-columns:repeat(3,1fr)}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .trust{grid-template-columns:repeat(2,1fr)}
+  .mag{grid-template-columns:1fr 1fr}
+  .mag .post:first-child{grid-column:1/-1}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .fgrid > div:first-child{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .topbar .wrap > :nth-child(n+3){display:none}
+  .tools .hide-s{display:none}
+  .brand span{font-size:1.1rem}
+  .brand img{width:46px;height:46px}
+  .hero h1{-webkit-text-stroke-width:2px;text-shadow:3px 3px 0 var(--brown)}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .trust,.mag,.fgrid{grid-template-columns:1fr}
+  .products{gap:1rem .8rem}
+  .card h3{font-size:1.1rem}
+  .card .meta{flex-direction:column;gap:.1rem}
+  .calc .tiers{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="spark" viewBox="0 0 24 24"><path d="M12 0C13 7.5 16.5 11 24 12C16.5 13 13 16.5 12 24C11 16.5 7.5 13 0 12C7.5 11 11 7.5 12 0Z"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar"><div class="wrap">
+  <span>Diskreter Versand in neutraler Verpackung</span>
+  <svg class="spark"><use href="#spark"/></svg>
+  <span>Kostenlos ab 49 €</span>
+  <svg class="spark"><use href="#spark"/></svg>
+  <span>Persönliche Beratung Mo–Sa 9–21 Uhr</span>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <nav class="main" aria-label="Hauptnavigation">
+    <a href="#shop" class="on">Shop</a>
+    <a href="#party">Toyparty</a>
+    <a href="#team">Berater*in werden</a>
+    <a href="#magazin">Magazin</a>
+  </nav>
+  <a class="brand" href="#"><img src="logo.webp" alt="In &amp; Out with us"><span>In &amp; Out <em>with us</em></span></a>
+  <div class="tools">
+    <span class="hide-s">Suche</span>
+    <span class="hide-s">Konto</span>
+    <span>Tasche<span class="badge">2</span></span>
+  </div>
+</div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="claim label">All bodies <svg class="spark"><use href="#spark"/></svg> All genders <svg class="spark"><use href="#spark"/></svg> All beautiful</span>
+      <h1>Lust auf <span class="g">mehr?</span><span class="script">Komm rein.</span></h1>
+      <p class="lead">Toys, Dessous und Pflege aus körperfreundlichen Materialien. Online in Ruhe ausgesucht oder bei einer Toyparty mit unseren Berater*innen entdeckt, entspannt bei dir zu Hause.</p>
+      <div class="ctas">
+        <a class="btn pink" href="#shop">Zum Shop</a>
+        <a class="btn sage" href="#party">Toyparty buchen</a>
+      </div>
+    </div>
+    <div class="hero-logo">
+      <img src="logo.webp" alt="Logo In &amp; Out with us: All bodies, all genders, all beautiful">
+      <svg class="spark s s1" aria-hidden="true"><use href="#spark"/></svg>
+      <svg class="spark s s2" aria-hidden="true"><use href="#spark"/></svg>
+    </div>
+  </div>
+</section>
+
+<svg class="waves" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 40 C 240 0, 480 90, 720 50 S 1200 10, 1440 50 V120 H0Z" fill="#9fae74"/>
+  <path d="M0 62 C 260 22, 500 110, 740 70 S 1210 30, 1440 72 V120 H0Z" fill="#f2879a"/>
+  <path d="M0 84 C 280 44, 520 128, 760 92 S 1220 52, 1440 94 V120 H0Z" fill="#d6516b"/>
+  <path d="M0 104 C 300 70, 540 140, 780 112 S 1230 76, 1440 112 V120 H0Z" fill="#3b1b12"/>
+</svg>
+
+<section class="pillars">
+  <div class="wrap">
+    <div class="pillar">
+      <span class="label">Online-Shop</span>
+      <h2>In Ruhe aussuchen</h2>
+      <p>Über 600 Produkte, jedes mit Angaben zu Material, Lautstärke und Reinigung. Kauf auf Rechnung möglich, auf dem Kontoauszug steht nur „IO Handel GmbH“.</p>
+      <a class="btn" href="#shop" style="background:var(--pink)">Zum Shop</a>
+    </div>
+    <div class="pillar">
+      <span class="label">Toyparty</span>
+      <h2>Zusammen entdecken</h2>
+      <p>Ein Abend mit deinen Leuten und einer geschulten Berater*in. Kostenlos für Gastgebende, ohne Mindestbestellung, mit Geschenk ab 250 € Partyumsatz.</p>
+      <a class="btn" href="#party" style="background:var(--sage)">So läuft's ab</a>
+    </div>
+  </div>
+</section>
+
+<svg class="waves flip" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 0 H1440 V30 C 1200 60, 960 0, 720 30 S 240 60, 0 30Z" fill="#3b1b12"/>
+</svg>
+
+<div class="wrap">
+  <section class="block" id="shop">
+    <div class="head">
+      <div><span class="label">Sortiment</span><h2>Wonach ist dir? <span class="script">heute</span></h2></div>
+      <a href="#">Alle Kategorien</a>
+    </div>
+    <div class="cats">
+      <a class="cat" href="#"><b>Vibratoren</b><span>148 Produkte</span></a>
+      <a class="cat" href="#"><b>Auflege&shy;vibratoren</b><span>64 Produkte</span></a>
+      <a class="cat" href="#"><b>Für Paare</b><span>52 Produkte</span></a>
+      <a class="cat" href="#"><b>Für Penis&shy;besitzer*innen</b><span>71 Produkte</span></a>
+      <a class="cat" href="#"><b>Dessous</b><span>120 Produkte</span></a>
+      <a class="cat" href="#"><b>Gleitgel &amp; Pflege</b><span>89 Produkte</span></a>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="head">
+      <div><span class="label">Von unseren Berater*innen empfohlen</span><h2>Party-Lieblinge</h2></div>
+      <a href="#">Alle Bestseller</a>
+    </div>
+    <div class="products">
+      <a class="card" href="#">
+        <div class="img"><span class="flag">Bestseller</span>
+          <svg viewBox="0 0 100 160" aria-hidden="true"><g transform="rotate(-16 50 80)"><rect x="32" y="12" width="36" height="136" rx="18" fill="#f2879a" stroke="#3b1b12" stroke-width="4"/><rect x="40" y="26" width="7" height="44" rx="3.5" fill="#f8ead0" opacity=".8"/><circle cx="50" cy="122" r="5" fill="#3b1b12"/></g></svg>
+        </div>
+        <div class="meta"><h3>Lollie</h3><span class="price">89,00 €</span></div>
+        <div class="spec"><span>Silikon</span><span>IPX7</span><span>unter 40 dB</span></div>
+      </a>
+      <a class="card" href="#">
+        <div class="img"><span class="flag">Neu</span>
+          <svg viewBox="0 0 120 110" aria-hidden="true"><path d="M60 8C92 8 112 30 112 58C112 86 90 102 60 102C30 102 8 86 8 58C8 30 28 8 60 8Z" fill="#9fae74" stroke="#3b1b12" stroke-width="4"/><path d="M30 34C36 24 46 20 56 20" stroke="#f8ead0" stroke-width="6" stroke-linecap="round" fill="none" opacity=".8"/><circle cx="60" cy="62" r="12" fill="#f8ead0" stroke="#3b1b12" stroke-width="3"/></svg>
+        </div>
+        <div class="meta"><h3>Peachy</h3><span class="price">69,00 €</span></div>
+        <div class="spec"><span>Auflege</span><span>10 Stufen</span><span>USB-C</span></div>
+      </a>
+      <a class="card" href="#">
+        <div class="img">
+          <svg viewBox="0 0 100 160" aria-hidden="true"><g transform="rotate(12 50 80)"><path d="M50 10C64 10 70 24 70 40V140C70 146 66 150 60 150H40C34 150 30 146 30 140V40C30 24 36 10 50 10Z" fill="#f8ead0" stroke="#3b1b12" stroke-width="4"/><rect x="30" y="112" width="40" height="10" fill="#d6516b" stroke="#3b1b12" stroke-width="3"/><rect x="38" y="28" width="6" height="40" rx="3" fill="#fff" opacity=".9"/></g></svg>
+        </div>
+        <div class="meta"><h3>First Date</h3><span class="price">49,00 €</span></div>
+        <div class="spec"><span>Einsteiger*innen</span><span>Silikon</span><span>14 cm</span></div>
+      </a>
+      <a class="card" href="#">
+        <div class="img"><span class="flag">Für Paare</span>
+          <svg viewBox="0 0 140 110" aria-hidden="true"><path d="M20 70C20 40 40 22 62 30C70 33 72 44 70 56C68 70 58 88 40 90C28 92 20 84 20 70Z" fill="#f2879a" stroke="#3b1b12" stroke-width="4"/><path d="M70 56C76 40 92 30 108 36C124 42 126 66 112 80C100 92 84 92 74 84" fill="#9fae74" stroke="#3b1b12" stroke-width="4"/><path d="M32 56C34 46 42 40 50 40" stroke="#f8ead0" stroke-width="5" stroke-linecap="round" fill="none"/></svg>
+        </div>
+        <div class="meta"><h3>Duet</h3><span class="price">119,00 €</span></div>
+        <div class="spec"><span>App-Steuerung</span><span>IPX7</span><span>2 Motoren</span></div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<svg class="waves" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 30 C 240 0, 480 60, 720 30 S 1200 0, 1440 30 V80 H0Z" fill="#9fae74"/>
+  <path d="M0 52 C 260 22, 500 82, 740 52 S 1210 22, 1440 52 V80 H0Z" fill="#f2879a"/>
+</svg>
+
+<section class="party" id="party">
+  <div class="wrap party-grid">
+    <div>
+      <span class="label">Toyparty</span>
+      <h2>Ein Abend, über den ihr noch lange redet. <span class="script">Versprochen.</span></h2>
+      <p class="lead">Unsere Berater*innen bringen eine kuratierte Auswahl mit, erklären Materialien und Funktionen und beantworten jede Frage offen und ohne Verlegenheit. Bestellt wird diskret, jede Person für sich.</p>
+      <div class="finder">
+        <span class="label">Berater*in in deiner Nähe</span>
+        <form id="finder">
+          <input id="plz" inputmode="numeric" maxlength="5" placeholder="Postleitzahl" value="50667" aria-label="Postleitzahl">
+          <select id="art" aria-label="Art der Party">
+            <option>Toyparty zu Hause</option>
+            <option>JGA-Party</option>
+            <option>Online-Party</option>
+          </select>
+          <button class="btn pink" type="submit">Suchen</button>
+        </form>
+        <div class="advisors" id="advisors"></div>
+        <p class="note">Beispielergebnisse im Entwurf.</p>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><span class="n">1</span><div><b>Anfrage stellen</b><span>Wunschtermin und Ort angeben. Für Gastgebende ist die Party kostenlos.</span></div></li>
+      <li><span class="n">2</span><div><b>Deine Berater*in meldet sich</b><span>Innerhalb von 24 Stunden, um Gästezahl und Schwerpunkte abzustimmen.</span></div></li>
+      <li><span class="n">3</span><div><b>Der Abend</b><span>Rund zwei Stunden mit Produkten zum Anfassen, Fragen und Spielen. Ab 4 Gästen, ab 18 Jahren.</span></div></li>
+      <li><span class="n">4</span><div><b>Diskret bestellen</b><span>Jeder Gast bestellt einzeln, Lieferung in neutraler Verpackung direkt nach Hause.</span></div></li>
+      <li><span class="n">5</span><div><b>Dankeschön für dich</b><span>Ab 250 € Partyumsatz suchst du dir Produkte im Wert von 10 % des Umsatzes aus.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<svg class="waves flip" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 30 C 240 0, 480 60, 720 30 S 1200 0, 1440 30 V80 H0Z" fill="#9fae74"/>
+  <path d="M0 52 C 260 22, 500 82, 740 52 S 1210 22, 1440 52 V80 H0Z" fill="#f2879a"/>
+</svg>
+
+<div class="wrap">
+  <section class="block career" id="team">
+    <div>
+      <span class="label">Berater*in werden</span>
+      <h2>Dein eigenes Business. <span class="script">Mit uns.</span></h2>
+      <p style="max-width:32rem">Flexibel neben dem Job oder hauptberuflich. Wir stellen Startpaket, Schulung und deinen eigenen Shop-Link, du bestimmst deine Termine.</p>
+      <ul>
+        <li><svg class="spark"><use href="#spark"/></svg>Startpaket mit 30 Vorführprodukten</li>
+        <li><svg class="spark"><use href="#spark"/></svg>Zertifizierte Schulung zu Materialien, Anatomie und Beratung</li>
+        <li><svg class="spark"><use href="#spark"/></svg>Provision auch auf Online-Bestellungen deiner Gäste</li>
+        <li><svg class="spark"><use href="#spark"/></svg>Für alle Körper, alle Geschlechter, alle Lebensentwürfe</li>
+      </ul>
+      <a class="btn sage" href="#">Infoabend anfragen</a>
+    </div>
+    <div class="calc" aria-label="Provisionsrechner">
+      <span class="label">Provisionsrechner</span>
+      <label for="parties">Partys pro Monat <output id="oParties">4</output></label>
+      <input type="range" id="parties" min="1" max="12" value="4">
+      <label for="umsatz">Ø Umsatz pro Party <output id="oUmsatz">450 €</output></label>
+      <input type="range" id="umsatz" min="200" max="1200" step="50" value="450">
+      <div class="tiers" id="tiers">
+        <div data-min="0"><b>25 %</b>bis 1.000 €</div>
+        <div data-min="1000"><b>30 %</b>ab 1.000 €</div>
+        <div data-min="2500"><b>35 %</b>ab 2.500 €</div>
+        <div data-min="5000"><b>40 %</b>ab 5.000 €</div>
+      </div>
+      <div class="result"><span class="label">Deine Provision im Monat</span><b id="oResult">0 €</b></div>
+      <p class="note" style="margin:0">Beispielrechnung. Die Stufen sind Platzhalter für euer Provisionsmodell.</p>
+    </div>
+  </section>
+</div>
+
+<div class="trust-band">
+  <section class="wrap trust">
+    <div><svg class="spark"><use href="#spark"/></svg><b>Diskretion</b><p>Neutraler Karton, Absender „IO Handel“, neutrale Abrechnung.</p></div>
+    <div><svg class="spark"><use href="#spark"/></svg><b>Körperfreundlich</b><p>Phthalatfreie Materialien, medizinisches Silikon, geprüfte Gleitgele.</p></div>
+    <div><svg class="spark"><use href="#spark"/></svg><b>Echte Beratung</b><p>Menschen am Telefon und im Chat, ohne Callcenter-Skripte.</p></div>
+    <div><svg class="spark"><use href="#spark"/></svg><b>Hygiene</b><p>Originalversiegelt, 2 Jahre Gewährleistung, Pflegeanleitung zu jedem Produkt.</p></div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section class="block" id="magazin">
+    <div class="head">
+      <div><span class="label">Magazin</span><h2>Reden wir drüber. <span class="script">Ohne Tabu.</span></h2></div>
+      <a href="#">Alle Artikel</a>
+    </div>
+    <div class="mag">
+      <a class="post" href="#"><div class="ph"><svg viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M0 70 C40 50 80 90 160 60 V100 H0Z" fill="#9fae74"/><path d="M0 82 C50 62 90 100 160 76 V100 H0Z" fill="#d6516b"/><use href="#spark" x="110" y="18" width="18" height="18" fill="#3b1b12"/><use href="#spark" x="30" y="24" width="10" height="10" fill="#4c5a2c"/></svg></div><span class="label">Ratgeber</span><h3>Das erste Toy: worauf es bei Material und Form ankommt</h3><p>Silikon, Glas oder ABS? Ein Überblick mit Tipps unserer Berater*innen.</p></a>
+      <a class="post" href="#"><div class="ph"><svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="80" cy="70" r="34" fill="#f2879a" stroke="#3b1b12" stroke-width="3"/><use href="#spark" x="112" y="20" width="16" height="16" fill="#3b1b12"/></svg></div><span class="label">Pflege</span><h3>Gleitgel auf Wasser- oder Silikonbasis?</h3><p>Welche Kombination mit welchem Material funktioniert.</p></a>
+      <a class="post" href="#"><div class="ph"><svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M0 60 C40 40 80 80 160 50 V120 H0Z" fill="#f2879a"/><path d="M0 80 C50 60 90 100 160 70 V120 H0Z" fill="#9fae74"/><use href="#spark" x="40" y="16" width="14" height="14" fill="#d6516b"/></svg></div><span class="label">Toyparty</span><h3>So wird euer JGA entspannt und lustig</h3><p>Ablauf, Gästezahl und was die Berater*in mitbringt.</p></a>
+    </div>
+  </section>
+</div>
+</main>
+
+<svg class="waves" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 40 C 240 0, 480 90, 720 50 S 1200 10, 1440 50 V120 H0Z" fill="#9fae74"/>
+  <path d="M0 62 C 260 22, 500 110, 740 70 S 1210 30, 1440 72 V120 H0Z" fill="#f2879a"/>
+  <path d="M0 84 C 280 44, 520 128, 760 92 S 1220 52, 1440 94 V120 H0Z" fill="#d6516b"/>
+  <path d="M0 104 C 300 70, 540 140, 780 112 S 1230 76, 1440 112 V120 H0Z" fill="#3b1b12"/>
+</svg>
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <div class="fbrand"><img src="logo.webp" alt=""><p style="max-width:20rem">Toys, Dessous und Pflege mit persönlicher Beratung. Online und bei dir zu Hause.</p></div>
+    </div>
+    <div><b>Shop</b><a href="#">Neuheiten</a><a href="#">Bestseller</a><a href="#">Geschenkkarten</a></div>
+    <div><b>Toyparty</b><a href="#">Party buchen</a><a href="#">Berater*in finden</a><a href="#">Berater*in werden</a></div>
+    <div><b>Service</b><a href="#">Versand &amp; Rückgabe</a><a href="#">Zahlungsarten</a><a href="#">Kontakt</a></div>
+  </div>
+  <div class="legal"><span>Abgabe nur an Personen ab 18 Jahren · © 2026 In &amp; Out with us</span><span>Impressum · Datenschutz · AGB · Jugendschutz</span></div>
+</div></footer>
+
+<script>
+// Berater*innen-Suche (Beispieldaten)
+const sample=[
+  {n:'Sabine K.',o:'Köln-Ehrenfeld',km:'2 km',r:'4,9 · 128 Partys'},
+  {n:'Leo M.',o:'Köln-Deutz',km:'4 km',r:'5,0 · 46 Partys'},
+  {n:'Aylin T.',o:'Leverkusen',km:'14 km',r:'4,8 · 203 Partys'}
+];
+function renderAdv(){
+  document.getElementById('advisors').innerHTML=sample.map(a=>
+    `<div class="adv"><span class="avatar">${a.n[0]}</span><div>${a.n}<small>${a.o} · ${a.km}</small></div><span class="rate">★ ${a.r}</span></div>`).join('');
+}
+renderAdv();
+document.getElementById('finder').addEventListener('submit',e=>{e.preventDefault();renderAdv()});
+
+// Provisionsrechner
+const fmt=n=>n.toLocaleString('de-DE',{maximumFractionDigits:0})+' €';
+const $=id=>document.getElementById(id);
+function calc(){
+  const p=+$('parties').value,u=+$('umsatz').value,total=p*u;
+  $('oParties').textContent=p; $('oUmsatz').textContent=fmt(u);
+  const tiers=[...document.querySelectorAll('#tiers div')];
+  let active=tiers[0];
+  tiers.forEach(t=>{if(total>=+t.dataset.min) active=t});
+  tiers.forEach(t=>t.classList.toggle('on',t===active));
+  $('oResult').textContent=fmt(total*parseInt(active.querySelector('b').textContent)/100);
+}
+$('parties').addEventListener('input',calc); $('umsatz').addEventListener('input',calc); calc();
+</script>
+</body>
+</html>
