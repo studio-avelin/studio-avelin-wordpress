@@ -175,3 +175,6 @@ function sa_journal_related_posts( $post_id, $limit = 3 ) {
 	}
 	return $related;
 }
+
+/** One-time content repair (see file). */
+require_once __DIR__ . '/sa-journal-fix-post-42.php';
