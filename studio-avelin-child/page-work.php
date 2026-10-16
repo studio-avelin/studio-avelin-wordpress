@@ -27,16 +27,6 @@ $sa_clients = array(
 		'tint'   => 'warm',
 	),
 	array(
-		'name'   => 'Portfolio Page',
-		'full'   => 'MONROE Toyparty Landingpage',
-		'meta'   => 'Kundenprojekt · Landingpage',
-		'status' => 'Live',
-		'text'   => 'Eine warme, diskrete Portfolio- und Landingpage für eine selbstständige MONROE-Beraterin – stilvoll, einladend und mit einem einfachen Weg zum Kontakt.',
-		'url'    => $sa_home . 'work/monroe-toyparty-landingpage/',
-		'image'  => $sa_uri . '/assets/img/work/monroe/hero.jpg',
-		'tint'   => 'rose',
-	),
-	array(
 		'name'   => 'Bäckerei Curfs',
 		'full'   => 'Handwerksbäckerei',
 		'meta'   => 'Kundenprojekt · Website',

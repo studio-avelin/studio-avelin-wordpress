@@ -49,14 +49,14 @@ $sa_projects = array(
 		'tint'   => 'warm',
 	),
 	array(
-		'name'   => 'Portfolio Page',
-		'full'   => 'MONROE Toyparty Landingpage',
+		'name'   => 'Bäckerei Curfs',
+		'full'   => 'Handwerksbäckerei',
 		'status' => 'Live',
-		'meta'   => 'Kundenprojekt · Landingpage',
-		'text'   => 'Eine warme, zurückhaltende Portfolio- und Landingpage, die Angebot, Persönlichkeit und Kontakt stimmig zusammenbringt.',
-		'url'    => $sa_home . 'work/monroe-toyparty-landingpage/',
-		'image'  => $sa_uri . '/assets/img/work/monroe/hero.jpg',
-		'tint'   => 'rose',
+		'meta'   => 'Kundenprojekt · Website',
+		'text'   => 'Ein stilvoller digitaler Auftritt für eine kleine, handwerkliche Bäckerei – reduziert, ästhetikgetrieben und einfach zu pflegen.',
+		'url'    => $sa_home . 'work/baeckerei-curfs/',
+		'image'  => $sa_uri . '/assets/img/work/baeckerei-curfs/hero.jpg',
+		'tint'   => 'warm',
 	),
 );
 
