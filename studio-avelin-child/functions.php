@@ -124,6 +124,34 @@ function sa_child_route_wpseo_canonical( $canonical ) {
 }
 add_filter( 'wpseo_canonical', 'sa_child_route_wpseo_canonical', 100 );
 
+/** Client request: nothing about Maaike may show up in search engines. */
+function sa_child_is_noindex_route() {
+	$request_path = trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+	return in_array( $request_path, array( 'work/monroe-toyparty-landingpage', 'work/maaike-fiebus' ), true );
+}
+
+function sa_child_noindex_header() {
+	if ( sa_child_is_noindex_route() ) {
+		header( 'X-Robots-Tag: noindex, nofollow', true );
+	}
+}
+add_action( 'send_headers', 'sa_child_noindex_header' );
+
+function sa_child_noindex_wpseo_robots( $robots ) {
+	return sa_child_is_noindex_route() ? 'noindex, nofollow' : $robots;
+}
+add_filter( 'wpseo_robots', 'sa_child_noindex_wpseo_robots', 100 );
+
+function sa_child_noindex_wp_robots( $robots ) {
+	if ( sa_child_is_noindex_route() ) {
+		unset( $robots['index'], $robots['follow'], $robots['max-image-preview'] );
+		$robots['noindex']  = true;
+		$robots['nofollow'] = true;
+	}
+	return $robots;
+}
+add_filter( 'wp_robots', 'sa_child_noindex_wp_robots', 100 );
+
 /** Intentional descriptions for the homepage, Services and native Journal routes. */
 function sa_child_meta_description( $description = '' ) {
 	$request_path = trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
