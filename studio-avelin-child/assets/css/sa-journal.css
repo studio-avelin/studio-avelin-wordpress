@@ -97,11 +97,12 @@ body.admin-bar .sa-journal-header { top:32px; }
 .sa-single__grid { display:grid; gap:3rem; }
 .sa-single__aside { display:none; }
 .sa-single__sticky { display:grid; gap:2.5rem; }
-.sa-toc ol { display:grid; gap:.8rem; margin:1rem 0 0; padding:0; list-style:none; }
-.sa-toc li { display:flex; gap:.7rem; color:var(--j-muted); font-size:.82rem; line-height:1.35; }
-.sa-toc li span { color:var(--j-muted); font-family:var(--sa-font-display); font-size:.68rem; font-weight:600; }
+.sa-toc ol { display:grid; gap:.9rem; margin:1rem 0 0; padding:0; list-style:none; }
+.sa-toc li { display:flex; gap:.7rem; color:#55585c; font-size:1rem; line-height:1.4; }
+.sa-toc li span { color:var(--j-muted); font-family:var(--sa-font-display); font-size:.8rem; font-weight:600; }
 .sa-toc li.is-active span { color:var(--j-lime); }.sa-toc li.is-active a { color:var(--j-ink); font-weight:500; }
-.sa-toc__level-3 { padding-left:1rem; }
+.sa-toc__level-3 { padding-left:1rem; font-size:.94rem; }
+.sa-single__aside .sa-back { font-size:.75rem; }
 .sa-copy-link { border:0; border-bottom:1px solid var(--j-line); border-radius:0; padding:.25rem 0; background:transparent; color:var(--j-ink); cursor:pointer; font:inherit; }
 .sa-single__tags a { display:inline-block; margin:.65rem .6rem 0 0; color:var(--j-muted); font-size:.75rem; }
 .sa-single__meta { margin:0; letter-spacing:.15em; }.sa-single__header h1 { max-width:15ch; margin:1rem 0 0; font-size:clamp(2.1rem,6vw,3.4rem); font-weight:700; line-height:1.02; letter-spacing:-.035em; }

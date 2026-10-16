@@ -577,4 +577,5 @@ function sa_child_configure_ionos_smtp( $phpmailer ) {
 }
 add_action( 'phpmailer_init', 'sa_child_configure_ionos_smtp' );
 
+require_once get_stylesheet_directory() . '/inc/sa-diag.php';
 require_once get_stylesheet_directory() . '/inc/sa-journal.php';

@@ -141,3 +141,21 @@ SA_BLOCKS;
 	update_option( 'sa_journal_fix_post_42', is_wp_error( $result ) ? 'error: ' . $result->get_error_message() : 'done ' . gmdate( 'c' ), false );
 }
 add_action( 'wp_loaded', 'sa_journal_fix_post_42' );
+
+/**
+ * Saving the repaired content made WordPress file the post under the default
+ * category ("Uncategorized"), which it did not have before. Remove it again.
+ */
+function sa_journal_fix_post_42_category() {
+	if ( get_option( 'sa_journal_fix_post_42_category' ) ) {
+		return;
+	}
+	$terms   = wp_get_object_terms( 42, 'category' );
+	$default = (int) get_option( 'default_category' );
+	if ( ! is_wp_error( $terms ) && 1 === count( $terms ) && $default === (int) $terms[0]->term_id ) {
+		wp_set_object_terms( 42, array(), 'category' );
+		clean_post_cache( 42 );
+	}
+	update_option( 'sa_journal_fix_post_42_category', 'done ' . gmdate( 'c' ), false );
+}
+add_action( 'wp_loaded', 'sa_journal_fix_post_42_category', 20 );

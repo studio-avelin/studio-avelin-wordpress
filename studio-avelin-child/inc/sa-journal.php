@@ -109,6 +109,15 @@ function sa_journal_unique_heading_id( $text, &$used ) {
 	return $id;
 }
 
+/**
+ * URL of a category or tag, or the Journal archive if WordPress cannot build one.
+ * get_term_link() can return a WP_Error, which would crash esc_url().
+ */
+function sa_journal_term_url( $term ) {
+	$url = get_term_link( $term );
+	return is_wp_error( $url ) ? sa_journal_archive_url() : $url;
+}
+
 /** Add heading IDs and return the H2/H3 table of contents. */
 function sa_journal_prepare_content( $content ) {
 	$headings = array();

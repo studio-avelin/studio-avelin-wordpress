@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 $archive_url    = sa_journal_archive_url();
 $journal_terms  = get_terms( array( 'taxonomy' => 'category', 'hide_empty' => true, 'number' => 1 ) );
-$categories_url = $journal_terms && ! is_wp_error( $journal_terms ) ? get_term_link( $journal_terms[0] ) : $archive_url;
+$categories_url = $journal_terms && ! is_wp_error( $journal_terms ) ? sa_journal_term_url( $journal_terms[0] ) : $archive_url;
 $is_taxonomy    = is_category() || is_tag();
 ?>
 <header class="sa-journal-header">

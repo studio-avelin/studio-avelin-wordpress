@@ -11,7 +11,7 @@ $category_names = $category ? wp_list_pluck( $categories, 'name' ) : array();
 	</a>
 	<div class="sa-journal-card__body">
 		<p class="sa-journal-card__meta">
-			<?php if ( $category ) : ?><a href="<?php echo esc_url( get_term_link( $category ) ); ?>"><?php echo esc_html( $category->name ); ?></a><span aria-hidden="true"> · </span><?php endif; ?>
+			<?php if ( $category ) : ?><a href="<?php echo esc_url( sa_journal_term_url( $category ) ); ?>"><?php echo esc_html( $category->name ); ?></a><span aria-hidden="true"> · </span><?php endif; ?>
 			<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( strtoupper( get_the_date( 'M j, Y' ) ) ); ?></time>
 		</p>
 		<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
