@@ -73,7 +73,7 @@ $sa_facts = array(
 		<section class="sa-section sa-afig sa-reveal" aria-labelledby="sa-about-figure-title">
 			<div class="sa-afig__panel">
 				<figure class="sa-afig__media">
-					<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/about/michael-portrait.jpg' ); ?>" alt="Michael, Gründer von Studio Avelin" loading="lazy" width="768" height="1024" />
+					<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/about/michael.jpg' ); ?>" alt="Michael, Gründer von Studio Avelin" loading="lazy" width="1014" height="1200" />
 				</figure>
 				<div class="sa-afig__text">
 					<span class="sa-sec-kicker">Wer dahintersteht</span>
