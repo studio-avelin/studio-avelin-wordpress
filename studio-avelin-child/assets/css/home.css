@@ -2899,6 +2899,8 @@ body.sa-page--about .sa-afig { border-bottom: 0; }
 @media (min-width: 820px) {
   .sa-front .sa-afig__media img { max-height: 460px; }
 }
+/* About portrait: face sits low in the frame (dark headroom above). */
+.sa-page--about .sa-afig__media img { object-position: 50% 62%; }
 .sa-front .sa-afig__text .sa-sec-kicker { color: var(--sa-muted-dark); }
 .sa-front .sa-afig__quote {
   margin-top: 1.4rem;
