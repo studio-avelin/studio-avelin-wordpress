@@ -99,8 +99,10 @@ for file in "${FILES[@]}"; do
   }
 done
 
-mkdir -p "${BACKUP_DIR}/parts" "${BACKUP_DIR}/patterns" "${BACKUP_DIR}/assets/css" "${BACKUP_DIR}/assets/img" "${BACKUP_DIR}/assets/js"
-echo "Uploading ${#FILES[@]} files. New files (favicons, new work pages, style.css, theme.json) are not backed up because they do not exist on the server yet."
+for file in "${FILES[@]}"; do
+  mkdir -p "${BACKUP_DIR}/$(dirname "${file}")"
+done
+echo "Backing up every file before it is replaced. Files that do not exist on the server yet are skipped."
 echo "Deploying ${#FILES[@]} child-theme files to IONOS..."
 
 expect -f - "$REMOTE_USER" "$REMOTE_HOST" "$REMOTE_DIR" "$LOCAL_DIR" "$BACKUP_DIR" "${FILES[@]}" <<'EXPECT'
@@ -140,9 +142,27 @@ expect {
 }
 wait_for_prompt "authentication"
 
-foreach file [list "style.css" "front-page.php" "functions.php" "single.php" "single-experiment.php" "page-experiments.php" "page-about-me.php" "page-services.php" "page-datenschutzerklaerung.php" "page-impressum.php" "page-work.php" "page-work-stan.php" "page-work-monroe-toyparty-landingpage.php" "parts/sa-header.php" "parts/sa-project-note.php" "parts/sa-footer.php" "patterns/datenschutz.php" "patterns/impressum.php" "assets/img/portrait.jpg" "assets/img/project-portfolio-visual.svg" "assets/css/home.css" "assets/css/pages.css" "assets/css/sa-base.css" "assets/js/home.js"] {
-  send -- "get $remote_dir/$file $backup_dir/$file\r"
-  wait_for_prompt "backup of $file"
+# Back up every file that is about to be replaced. A file that is new on the
+# server ("not found") is skipped; any other error still aborts the deploy.
+proc backup_file {remote local context} {
+  send -- "get $remote $local\r"
+  expect {
+    -re "(?i)(not found|no such file)" {
+      puts "$context: not on server yet, skipped"
+      exp_continue
+    }
+    -re "(?i)(permission denied|couldn't|failure)" {
+      puts stderr "$context failed"
+      exit 1
+    }
+    "sftp>" { return }
+    timeout { puts stderr "$context timed out"; exit 1 }
+    eof { puts stderr "Connection closed during $context"; exit 1 }
+  }
+}
+
+foreach file $files {
+  backup_file "$remote_dir/$file" "$backup_dir/$file" "backup of $file"
 }
 
 foreach directory [list \
